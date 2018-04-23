@@ -21,15 +21,18 @@ module.exports = [
                 else if (pageSize > MAX_PAGE_SIZE) pageSize = MAX_PAGE_SIZE;
 
                 try {
-                    const books = await Book.findAll({
+                    const books = await Book.findAndCountAll({
                         offset: (page - 1) * pageSize,
                         limit: pageSize,
+                        order: [ ['name', 'ASC'] ]
                     });
                     res.send({
-                        list: books,
+                        list: books.rows,
+                        totalPage: Math.ceil(books.count / pageSize),
+                        total: books.count,
                     });
                     
-                }  catch (e) {        
+                } catch (e) {        
                     res.status(500).send({ message: e.message });
                 }
             }

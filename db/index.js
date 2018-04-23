@@ -56,7 +56,7 @@ function defineModel(name, attributes) {
         tableName: name + 's',
         timestamps: false,
         hooks: {
-            beforeValidate: function (obj) {
+            beforeValidate: function (obj, options) {
                 let now = Date.now();
                 if (obj.isNewRecord) {
                     console.log('will create entity...' + obj);
@@ -67,9 +67,16 @@ function defineModel(name, attributes) {
                     obj.version = 0;
                 } else {
                     console.log('will update entity...');
-                    obj.version++;
+                    let lastVersion = obj.version;
+                    obj.version = lastVersion + 1;
                 }
                 obj.updatedAt = now;
+                /*  
+                 * hook work incorrectly, see https://github.com/sequelize/sequelize/issues/8586
+                 * !!! workaround: https://github.com/sequelize/sequelize/issues/8729
+                 */
+                options.fields.push('updatedAt');
+                options.fields.push('version');
             }
         }
     });
