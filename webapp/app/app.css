@@ -1,0 +1,31 @@
+/* app css stylesheet */
+
+.view-container {
+    padding: 50px;
+}
+
+/* View: book list */
+.books {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.books li {
+    clear: both;
+    height: 115px;
+    padding-top: 15px;
+}
+
+.thumb {
+    float: left;
+    height: 100px;
+    margin: -0.5em 1em 1.5em 0;
+    padding-bottom: 1em;
+    width: 100px;
+}
+
+.thumb > img {
+    max-height: 100%;
+    width: auto;
+}

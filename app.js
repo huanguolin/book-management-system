@@ -1,29 +1,19 @@
 'use strict';
 
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const express = require('express');
+const createError = require('http-errors');
+const path = require('path');
+const logger = require('morgan');
 
-var indexRouter = require('./routes');
-var registerAllApi = require('./api');
+const registerAllApi = require('./api');
 
-var app = express();
-
-// view engine setup
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'ejs');
+const app = express();
 
 // basic configure
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(logger('dev'));
+app.use(express.static(path.join(__dirname, 'webapp/app')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-
-// root router configure
-app.use('/', indexRouter);
+app.use(logger('dev'));
 
 // allow cross origin
 app.use(function(req, res, next) {
