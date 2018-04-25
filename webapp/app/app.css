@@ -1,31 +1,130 @@
 /* app css stylesheet */
 
-.view-container {
-    padding: 50px;
+body {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100vw;
+    height: 100vh;
 }
 
-/* View: book list */
-.books {
+
+/* header part */
+.header {
+    z-index: 100;
+    flex: 0 0 auto;
+    width: 100%;
+    height: 5em;
+    margin: 0;
+    padding: 0;    
+    box-shadow: 0 1px 3px rgba(26,26,26,.1);
+}
+
+.header > .content {
+    display: flex;
+    justify-content: space-between;
+    width: 55%;
+    max-width: 700px; 
+    height: inherit;
+    margin: 0 auto;
+    padding: .6em; 
+    font-size: 2em;
+}
+
+.header > .content > a:first-child { text-decoration: none; }
+
+@media (max-width: 768px) {
+    .header > .content { width: 100%; }        
+}
+
+
+/* main */
+.main {
+    flex: 1 1 auto;
+    overflow: auto;
+}
+
+.main > .main-view {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* footer */
+.footer {    
+    z-index: 100;
+    flex: 0 0 auto;
+    position: relative;
+    width: 100%;
+    height: 5em;
+    box-shadow: 0 -1px 3px rgba(26,26,26,.1);
+}
+
+.my-pager {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around; 
+    width: 50%;
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-.books li {
+@media (max-width: 768px) {
+    .my-pager { width: 100%; }      
+}
+
+.my-pager > li {
+    padding: .3em .9em;
+}
+
+.my-pager > li:nth-of-type(2n+1) {
+    border: 1px solid #ccc;
+    border-radius: 1em;
+    cursor: pointer;
+}
+
+.my-pager > li:nth-of-type(2n+1):hover {
+    background: #ddd;
+}
+
+
+/* View: book list */
+.books {
+    height: 100%; 
+    list-style: none;
+    overflow: auto;
+}
+
+.books-list {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 1em;
+}
+
+.books-list .books-list-item {
     clear: both;
-    height: 115px;
-    padding-top: 15px;
+    height: 16em;
+    padding: 1em;
+    margin-top: 1em;
+    list-style: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 .thumb {
     float: left;
-    height: 100px;
-    margin: -0.5em 1em 1.5em 0;
-    padding-bottom: 1em;
-    width: 100px;
+    height: 14em;
+    width: 14em;
+    margin: 0 1em;
 }
 
 .thumb > img {
+    display: block;
     max-height: 100%;
     width: auto;
+    margin: 0 auto;
 }

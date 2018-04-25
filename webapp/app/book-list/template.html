@@ -1,9 +1,11 @@
-<ul class="books">
-    <li ng-repeat="book in $ctrl.books" class="thumbnail book-list-item">
-        <a href="#!/book/{{book.id}}" class="thumb">
-            <img ng-src="{{book.cover ? book.cover : 'img/default_book_cover.jpg'}}" alt="{{book.name}}" />
-        </a>
-        <a href="#!/book/{{book.id}}">{{book.name}}</a>
-        <p>{{book.author}}</p>
-    </li>
-</ul>
+<div class="books">
+    <ul class="books-list">
+        <li ng-repeat="book in $ctrl.books" class="books-list-item">
+            <a href="#!/book/{{book.id}}" class="thumb">
+                <img ng-src="{{book.cover ? book.cover : 'img/default_book_cover.jpg'}}" alt="{{book.name}}" />
+            </a>
+            <h3><a href="#!/book/{{book.id}}">{{book.name}}</a></h3>
+            <h4>{{book.author}}</h4>
+        </li>
+    </ul>
+</div>

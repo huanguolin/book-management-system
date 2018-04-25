@@ -3,7 +3,8 @@
 // Declare app level module which depends on views, and components
 angular.module('booksApp', [
     'ngRoute',
-    'ngResource',
+    'core',
+    'core.page',
     'bookList'
 ])
     

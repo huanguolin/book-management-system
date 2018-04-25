@@ -5,17 +5,33 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>图书管理系统</title>
+    <title>Book Management System</title>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="app.css">
 </head>
 
 <body>
 
-    
-    <div class="view-container">
-        <div ng-view class="view-frame"></div>
-    </div>
+    <header class="header">
+        <div class="content">
+            <a href="#!/books">Books</a>
+            <a href="#!/book/create">
+                <span class="glyphicon glyphicon-plus"></span>
+            </a>
+        </div>
+    </header>
+
+    <main class="main">
+        <div ng-view class="main-view"></div>
+    </main>
+
+    <footer class="footer">
+        <ul class="my-pager" ng-controller="PaginationController">
+            <li class="previous disabled">previous</li>
+            <li>{{ page.total !== -1 ? '...' : (page.current + '/' + page.total) }}</li>
+            <li class="next">next</li>
+        </ul>
+    </footer>
 
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
@@ -23,6 +39,9 @@
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="app.js"></script>
+    <script src="core/core.moudule.js"></script>
+    <script src="core/page/service.js"></script>
+    <script src="pagination/controller.js"></script>
     <script src="book-list/component.js"></script>
 
 </html>
