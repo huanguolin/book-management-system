@@ -1,3 +1,6 @@
+# ignore use upload book cover images
+webapp/app/img/cover/*
+
 # Logs
 logs
 *.log

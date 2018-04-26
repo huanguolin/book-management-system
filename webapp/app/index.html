@@ -15,7 +15,7 @@
     <header class="header">
         <div class="content">
             <a href="#!/books">Books</a>
-            <a href="#!/book/create">
+            <a href="#!/add">
                 <span class="glyphicon glyphicon-plus"></span>
             </a>
         </div>
@@ -26,10 +26,16 @@
     </main>
 
     <footer class="footer">
-        <ul class="my-pager" ng-controller="PaginationController">
-            <li class="previous disabled">previous</li>
-            <li>{{ page.total !== -1 ? '...' : (page.current + '/' + page.total) }}</li>
-            <li class="next">next</li>
+        <ul class="my-pager">
+            <li ng-class="{disabled: page.current === 1}" 
+                ng-click="page.current = page.current > 1 ? page.current - 1 : 1">
+                previous
+            </li>
+            <li>{{ page.total === -1 ? '...' : (page.current + '/' + page.total) }}</li>
+            <li ng-class="{disabled: page.current === page.total}" 
+                ng-click="page.current = page.current < page.total ? page.current + 1 : page.current">
+                next
+            </li>
         </ul>
     </footer>
 
@@ -39,9 +45,7 @@
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="app.js"></script>
-    <script src="core/core.moudule.js"></script>
-    <script src="core/page/service.js"></script>
-    <script src="pagination/controller.js"></script>
     <script src="book-list/component.js"></script>
+    <script src="book-detail/component.js"></script>
 
 </html>

@@ -41,11 +41,15 @@ body {
 .main {
     flex: 1 1 auto;
     overflow: auto;
+    position: relative;
 }
 
 .main > .main-view {
-    width: 100%;
-    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 
@@ -79,12 +83,19 @@ body {
 
 .my-pager > li {
     padding: .3em .9em;
+    user-select: none;
 }
 
 .my-pager > li:nth-of-type(2n+1) {
     border: 1px solid #ccc;
     border-radius: 1em;
     cursor: pointer;
+}
+
+.my-pager > li:nth-of-type(2n+1).disabled {
+    color: gray;
+    background: #ddd;
+    cursor: not-allowed;
 }
 
 .my-pager > li:nth-of-type(2n+1):hover {
@@ -105,7 +116,7 @@ body {
     padding: 1em;
 }
 
-.books-list .books-list-item {
+.books-list-item {
     clear: both;
     height: 16em;
     padding: 1em;
@@ -115,16 +126,65 @@ body {
     border-radius: 5px;
 }
 
-.thumb {
+.books-list-item .thumb {
     float: left;
     height: 14em;
     width: 14em;
     margin: 0 1em;
 }
 
-.thumb > img {
+@media (max-width: 768px) {
+    .books-list-item { height: 12em; }
+    .books-list-item .thumb {
+        height: 10em;
+        width: 10em;
+    }
+}
+
+.books-list-item .thumb > img {
     display: block;
     max-height: 100%;
     width: auto;
     margin: 0 auto;
+}
+
+/* View: book detail */
+.book {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.book-detail {    
+    /* use flex to make child vertical center */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    max-width: 700px;
+    height: inherit;
+    margin: 0 auto;
+    padding: 1em;
+}
+
+.book-detail .cover > img {
+    display: block;
+    max-height: 350px;
+    width: auto;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .book-detail .cover > img {
+        max-width: calc(100vw - 30px); 
+        height: auto;
+        margin: 0 auto;
+    }
+    .book-detail .info {
+        padding: 0 3em;
+    }
+}
+
+.book-detail .info .author {
+    color: gray;
 }
