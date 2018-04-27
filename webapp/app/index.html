@@ -15,18 +15,18 @@
     <header class="header">
         <div class="content">
             <a href="#!/books">Books</a>
-            <a href="#!/add">
+            <a href="#!/addbook">
                 <span class="glyphicon glyphicon-plus"></span>
             </a>
         </div>
     </header>
 
-    <main class="main">
-        <div ng-view class="main-view"></div>
+    <main ng-view class="main">
+        <!-- <div ng-view class="main-view"></div> -->
     </main>
 
-    <footer class="footer">
-        <ul class="my-pager">
+    <footer class="footer" ng-show="page.show">
+        <ul class="my-pager"ng-cloak>
             <li ng-class="{disabled: page.current === 1}" 
                 ng-click="page.current = page.current > 1 ? page.current - 1 : 1">
                 previous
@@ -47,5 +47,6 @@
     <script src="app.js"></script>
     <script src="book-list/component.js"></script>
     <script src="book-detail/component.js"></script>
+    <script src="add-edit-book/component.js"></script>
 
 </html>

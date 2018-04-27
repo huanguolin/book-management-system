@@ -1,0 +1,32 @@
+
+/* add edit book */
+.add-edit-book {
+    max-width: 750px;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 0 auto;
+    padding: 1em;
+}
+
+.add-edit-book > .title {
+    margin: 1em 0;
+    padding: 0 1em;
+    color: gray;
+    border-bottom: 1px solid #ccc;
+}
+
+@media (max-width: 767px) {
+    .add-edit-book > .title,
+    .add-edit-book .submit { text-align: center; }
+}
+
+.add-edit-book .pic {
+    text-align: center;
+}
+
+.add-edit-book .pic img {
+    max-height: 20em;
+    width: auto; 
+    margin-bottom: 1em;
+}

@@ -17,6 +17,7 @@ angular.module('bookList', [])
                 var currentPage = $rootScope.page.current;
                 // update global book info (note: index start from 0)
                 $rootScope.book.current = (currentPage - 1) * PAGE_SIZE + index + 1; 
+                $rootScope.book.info = $scope.books[index];
             };
             // trigger the watch to update current page info
             $rootScope.page.current = 1; 

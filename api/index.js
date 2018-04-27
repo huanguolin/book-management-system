@@ -32,8 +32,11 @@ function registerApi (app, api) {
         }
 
         // pre-proc
-        if (typeof api.preproc !== 'function') next();
-        else api.preproc(req, res, next);
+        if (typeof api.preproc !== 'function') {
+            next();
+        } else {
+            api.preproc(req, res, next);
+        }
     });
 
     allowedMethods.forEach(k => app[k](path, api.methods[k]));

@@ -6,6 +6,8 @@ function extractField (obj, required, optional) {
     for (let k of required) {
         if (!obj.hasOwnProperty(k)) {
             throw new Error('miss required field: ' + k);
+        } else if (('' + obj[k]).length === 0) {
+            throw new Error('required field "' + k + '" can not be empty');
         }
         o[k] = obj[k];
     }

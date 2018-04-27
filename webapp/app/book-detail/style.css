@@ -1,0 +1,62 @@
+
+.book-detail { 
+    padding: 1em;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .book-detail {
+        position: absolute;
+        top: 50%;  
+        left: 50%;
+        width: 700px;      
+        transform: translate(-50%, -50%);
+    }
+}
+
+.book-detail .action {
+    display: flex;
+    flex-flow: row-reverse nowrap;
+    padding: 0 3em;
+    font-size: 1.2em;
+}
+
+.book-detail:hover .action {
+    visibility: visible;
+}
+
+@media (min-width: 768px) {
+    .book-detail .action { visibility: hidden; }
+}
+
+.book-detail .action .glyphicon {
+    padding: .5em;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.book-detail .action .glyphicon:hover {
+    color: #666;
+}
+
+.book-detail .cover > img {
+    display: block;
+    max-height: 350px;
+    width: auto;
+    margin: 0 auto;
+}
+
+@media (max-width: 767px) {
+    .book-detail .cover > img {
+        max-width: calc(100vw - 30px); 
+        height: auto;
+        margin: 0 auto;
+    }
+    .book-detail .info {
+        padding: 0 3em;
+    }
+}
+
+.book-detail .info .author {
+    color: gray;
+}

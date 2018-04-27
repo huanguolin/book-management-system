@@ -38,7 +38,7 @@ app.use(function (err, req, res, next) {
     const isApi = path => /^\/api\/.+/.test(path);
 
     if (isApi(req.path)) {
-        res.send({ message: err.message });
+        res.json({ message: err.message });
     } else {
         // set locals, only providing error in development
         res.locals.message = err.message;

@@ -1,14 +1,18 @@
-<div class="book">
-    <div class="book-detail container">
-        <div class="row">
-            <div class="col-sm-6 cover">
-                <img ng-src="{{currentBook.cover}}" alt="{{currentBook.name}}"/>
-            </div>
-            <div class="col-sm-6 info">
-                <h3 class="text-primary">{{currentBook.name}}</h3>
-                <h5 class="author">{{currentBook.author}}</h5>
-                <p>{{currentBook.description}}</p>
-            </div>
+<div class="book-detail container">
+    <div class="row">
+        <div class="col-sm-12 action">
+            <a ng-href="{{ '#!/editbook/' + currentBook.id }}">
+                <span class="glyphicon glyphicon-pencil"></span>
+            </a>
+            <span class="glyphicon glyphicon-remove" ng-click="removeBook()"></span>
+        </div>
+        <div class="col-sm-6 cover">
+            <img ng-src="{{currentBook.cover}}" alt="{{currentBook.name}}" />
+        </div>
+        <div class="col-sm-6 info">
+            <h3 class="name text-primary">{{currentBook.name}}</h3>
+            <h5 class="author">{{currentBook.author}}</h5>
+            <p>{{currentBook.description}}</p>
         </div>
     </div>
 </div>
