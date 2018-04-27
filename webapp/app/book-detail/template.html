@@ -14,5 +14,9 @@
             <h5 class="author">{{currentBook.author}}</h5>
             <p>{{currentBook.description}}</p>
         </div>
+        <div class="col-sm-12 meta">
+            <span>{{currentBook.createdAt | ts2date}}</span>
+            <span>{{currentBook.updatedAt | ts2date}}</span>
+        </div>
     </div>
 </div>

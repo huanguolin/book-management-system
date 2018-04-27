@@ -148,4 +148,10 @@ angular.module('booksApp', [
         input = input || '';
         return input && (input.charAt(0).toUpperCase() + input.slice(1));
     };
+})
+.filter('ts2time', function() {
+    return function(ts) {
+        var date = new Date(ts);
+        return date.toLocaleString();
+    };
 });
