@@ -108,7 +108,7 @@ angular.module('booksApp', [
 
         $rootScope.$on('$routeChangeSuccess', function() {
             history.push($location.$$path);
-            if (history.length > 20) history.pop();
+            if (history.length > 20) history.shift();
         });
 
         $rootScope.back = function () {

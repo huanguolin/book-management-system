@@ -8,7 +8,8 @@ angular.module('addEditBook', ['ngRoute'])
         '$rootScope',
         '$scope',
         '$route',
-        function addEditBookController ($rootScope, $scope, $route) { 
+        '$timeout',
+        function addEditBookController ($rootScope, $scope, $route, $timeout) { 
             var id = $route.current.params.id;
             $scope.action = id ? 'edit' : 'add';
 
@@ -19,13 +20,16 @@ angular.module('addEditBook', ['ngRoute'])
                     author: oldBook.author,
                     description: oldBook.description,
                 };
+                $scope.cover = oldBook.cover ? oldBook.cover : 'img/default_book_cover.jpg';
             } else {
                 $scope.book = {
                     name: '',
                     author: '',
                     description: '',
                 };
+                $scope.cover = 'img/default_book_cover.jpg';
             }
+            $scope.newCover = '';
 
             $scope.submit = function (e) {
                 e.preventDefault();
@@ -49,7 +53,14 @@ angular.module('addEditBook', ['ngRoute'])
                     });
                 }
             };
-
+            $scope.uploadClick = function () {
+                $timeout(function () {
+                    angular.element('#coverUpload').trigger('click');
+                }, 0);
+            };
+            $scope.uploadCover = function () {
+                console.log('files:', $scope.newCover);
+            };
         }
     ]
 });

@@ -29,7 +29,7 @@ angular.module('bookList', [])
                 getBooks(function (res) {   
                     // update books               
                     $scope.books = res.list.map(function (b) {
-                        b.cover = b.cover ? 'img/cover/' + b.cover : 'img/default_book_cover.jpg';  
+                        b.cover = b.cover ? b.cover : 'img/default_book_cover.jpg';  
                         return b;
                     });
 

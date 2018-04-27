@@ -15,7 +15,7 @@ function registerApi (app, api) {
     const path = PATH_PREFIX + api.path;
     const allowedMethods = Object.keys(api.methods);
 
-    app.all(path, function (req, res, next) {
+    app.all(path, function (req, res, next) {    
         // allow cross origin
         if (req.method === 'OPTIONS') {
             res.header("Access-Control-Allow-Methods", allowedMethods.map(e => e.toUpperCase()).join());
@@ -35,7 +35,8 @@ function registerApi (app, api) {
         if (typeof api.preproc !== 'function') {
             next();
         } else {
-            api.preproc(req, res, next);
+            // api.preproc(req, res, next);
+            app.use(api.preproc);
         }
     });
 

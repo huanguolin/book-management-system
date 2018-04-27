@@ -25,6 +25,10 @@
     text-align: center;
 }
 
+.add-edit-book .pic input[type="file"] {
+    display: none;
+}
+
 .add-edit-book .pic img {
     max-height: 20em;
     width: auto; 

@@ -2,7 +2,20 @@
 
     <h4 class="title">{{action | capitalize}} Book</h4>
 
-    <div class="row">
+    <div class="row">        
+        <div class="col-sm-4 pic">
+            <div class="pre-view">
+                <img ng-src="{{cover}}" alt="default cover">
+                <input type="file" 
+                    id="coverUpload"
+                    name="coverFile" 
+                    accept="image/jpg, image/jpeg, image/png"
+                    ng-model="newCover"
+                    ng-change="uploadCover()"/>
+            </div>
+            <button class="btn btn-default" ng-click="uploadClick()">Upload Book Cover</button>
+        </div>
+        
         <form class="col-sm-8 form-horizontal">
         
             <div class="form-group">
@@ -53,12 +66,5 @@
             </div>
     
         </form>
-        
-        <div class="col-sm-4 pic">
-            <div>
-                <img src="img/default_book_cover.jpg" alt="default cover">
-            </div>
-            <button class="btn btn-default">Upload Book Cover</button>
-        </div>
     </div>
 </div>
