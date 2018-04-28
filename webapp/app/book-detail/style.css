@@ -46,17 +46,21 @@
     margin: 0 auto;
 }
 
+.book-detail .info .author {
+    color: gray;
+}
+
+.book-detail .meta {
+    margin: .3em 0;
+    font-size: .9em;
+    color: #aaa;
+}
+
 @media (max-width: 767px) {
     .book-detail .cover > img {
         max-width: calc(100vw - 30px); 
         height: auto;
         margin: 0 auto;
     }
-    .book-detail .info {
-        padding: 0 3em;
-    }
-}
-
-.book-detail .info .author {
-    color: gray;
+    .book-detail .info { padding:  0 3em; }
 }

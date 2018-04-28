@@ -89,7 +89,32 @@ angular.module('booksApp', [
             removeBook: function (id, cb) {
                 var Book = $resource('/api/book/:id', { id: '@id'});
                 Book.remove({id: id}, cb);
-            }
+            },
+            uploadCover: function (file, cb) {
+                var CoverImg = $resource('/api/cover/upload', null, {
+                    'save': {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': undefined,
+                            'Accept': 'application/json'
+                        },
+                        transformRequest: function (data, headerGetter) {
+                            var headers = headerGetter();
+                            headers['Content-Type'] = undefined;
+
+                            if (!data) {
+                                return data;
+                            }
+
+                            var formData = new FormData();
+                            formData.append('coverFile', file);
+
+                            return formData;
+                        }
+                    }
+                });
+                CoverImg.save(file, cb);
+            },
         };
 
         $rootScope.$watch(function () {
@@ -151,7 +176,13 @@ angular.module('booksApp', [
 })
 .filter('ts2time', function() {
     return function(ts) {
-        var date = new Date(ts);
-        return date.toLocaleString();
+        var time = new Date(ts);
+        var y = time.getFullYear();
+        var m = time.getMonth() + 1; // month start from 0
+        var d = time.getDate();
+        var h = time.getHours();
+        var min = time.getMinutes();
+        var s = time.getSeconds();
+        return [y, m, d].join('/') + ' ' + [h, min, s].join(':');
     };
 });

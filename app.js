@@ -4,10 +4,17 @@ const express = require('express');
 const createError = require('http-errors');
 const path = require('path');
 const logger = require('morgan');
+const fileUpload = require('express-fileupload');
 
 const registerAllApi = require('./api');
 
 const app = express();
+
+// config file upload middleware
+app.use(fileUpload({
+    limits: { fileSize: 5 * 1024 * 1024 }, // 5M 
+    abortOnLimit: true,
+}));
 
 // basic configure
 app.use(express.static(path.join(__dirname, 'webapp/app')));

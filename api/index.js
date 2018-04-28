@@ -2,10 +2,12 @@
 
 const book = require('./book');
 const books = require('./books');
+const cover = require('./cover');
 
 const apiList = [
     ...book,
     ...books,
+    ...cover
 ];
 
 const PATH_PREFIX = '/api';
@@ -15,7 +17,8 @@ function registerApi (app, api) {
     const path = PATH_PREFIX + api.path;
     const allowedMethods = Object.keys(api.methods);
 
-    app.all(path, function (req, res, next) {    
+    app.all(path, function (req, res, next) { 
+        
         // allow cross origin
         if (req.method === 'OPTIONS') {
             res.header("Access-Control-Allow-Methods", allowedMethods.map(e => e.toUpperCase()).join());
@@ -35,8 +38,7 @@ function registerApi (app, api) {
         if (typeof api.preproc !== 'function') {
             next();
         } else {
-            // api.preproc(req, res, next);
-            app.use(api.preproc);
+            api.preproc(req, res, next);
         }
     });
 

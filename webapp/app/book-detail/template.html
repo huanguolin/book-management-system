@@ -6,17 +6,22 @@
             </a>
             <span class="glyphicon glyphicon-remove" ng-click="removeBook()"></span>
         </div>
+
         <div class="col-sm-6 cover">
             <img ng-src="{{currentBook.cover}}" alt="{{currentBook.name}}" />
         </div>
+
         <div class="col-sm-6 info">
             <h3 class="name text-primary">{{currentBook.name}}</h3>
             <h5 class="author">{{currentBook.author}}</h5>
             <p>{{currentBook.description}}</p>
-        </div>
-        <div class="col-sm-12 meta">
-            <span>{{currentBook.createdAt | ts2date}}</span>
-            <span>{{currentBook.updatedAt | ts2date}}</span>
+            <div class="meta" 
+                ng-if="currentBook.version > 0">
+                Last update: {{currentBook.updatedAt | ts2time}}
+            </div>
+            <div class="meta">
+                Create at: {{currentBook.createdAt | ts2time}}
+            </div>
         </div>
     </div>
 </div>

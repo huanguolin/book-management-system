@@ -2,6 +2,8 @@
 
 const extractField = require('../util').extractField;
 const Book = require('../models').Book;
+const fs = require('fs');
+const path = require('path');
     
 /*
 the book fields that user can modify :
@@ -90,7 +92,20 @@ module.exports = [
             },
             async delete(req, res) {  
                 try {
+                    let cover = req.book.cover;
+
+                    // remove data record                
                     await req.book.destroy();
+
+                    // remove cover
+                    if (cover) {
+                        const coverPath = path.resolve('webapp/app', cover);
+                        if (fs.existsSync(coverPath)) {
+                            fs.unlinkSync(coverPath);
+                        }
+                    }
+
+                    // send success result 
                     res.send();
                 }  catch (e) {        
                     res.status(500).json({ message: e.message });

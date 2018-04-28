@@ -15,7 +15,7 @@ angular.module('bookDetail', [])
                 getBooks(function (res) {
                     var bookInfo = res.list[0]; 
                     var cover = bookInfo.cover;     
-                    bookInfo.cover = cover ? 'img/cover/' + cover : 'img/default_book_cover.jpg';  
+                    bookInfo.cover = cover ?  cover : 'img/default_book_cover.jpg';  
                     
                     // update scope property
                     $scope.currentBook = bookInfo;  
