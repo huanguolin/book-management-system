@@ -1,5 +1,6 @@
 # ignore use upload book cover images
 webapp/app/img/cover/*
+!webapp/app/img/cover/.gitkeep
 
 # Logs
 logs

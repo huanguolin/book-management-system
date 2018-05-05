@@ -1,17 +1,16 @@
-
-.book-detail { 
-    padding: 1em;
-    margin: 0 auto;
+.book-detail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
 }
 
-@media (min-width: 768px) {
-    .book-detail {
-        position: absolute;
-        top: 50%;  
-        left: 50%;
-        width: 700px;      
-        transform: translate(-50%, -50%);
-    }
+.book-detail .container {
+    width: 700px;
+    padding: 1em;
+    margin: auto;
 }
 
 .book-detail .action {
@@ -21,7 +20,7 @@
     font-size: 1.2em;
 }
 
-.book-detail:hover .action {
+.book-detail .container:hover .action {
     visibility: visible;
 }
 

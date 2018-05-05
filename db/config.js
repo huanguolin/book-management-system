@@ -1,12 +1,14 @@
 'use strict';
 
+const useMysql = false;
+
 const config = {
-    dialect: 'mysql',
+    dialect: useMysql ? 'mysql' : 'postgres',
     database: 'books_info',
     username: 'alvin',
     password: 'alvin',
     host    : 'localhost',
-    port: 3306,
+    port: useMysql ? 3306 : 5432,
 };
 
 module.exports = config;

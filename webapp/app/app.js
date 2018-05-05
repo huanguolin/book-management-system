@@ -176,13 +176,16 @@ angular.module('booksApp', [
 })
 .filter('ts2time', function() {
     return function(ts) {
-        var time = new Date(ts);
+        if (!ts) return;
+
+        var time = new Date(parseInt(ts));
         var y = time.getFullYear();
         var m = time.getMonth() + 1; // month start from 0
         var d = time.getDate();
         var h = time.getHours();
         var min = time.getMinutes();
         var s = time.getSeconds();
+        console.log(y);
         return [y, m, d].join('/') + ' ' + [h, min, s].join(':');
     };
 });

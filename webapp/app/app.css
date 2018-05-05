@@ -51,11 +51,9 @@ body {
     flex: 1 1 auto;
     overflow-y: auto;
     overflow-x: hidden;
-}
-
-@media (min-width: 768px) {
+    
     /* this only for book-detail */
-    .main {  position: relative; }
+    position: relative;
 }
 
 /* footer */
