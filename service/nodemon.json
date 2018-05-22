@@ -3,8 +3,7 @@
   "ignore": [
     ".git",
     "node_modules/**/node_modules",
-    "bin/",
-    "webapp/"
+    "bin/"
   ],
   "verbose": true,
   "env": {

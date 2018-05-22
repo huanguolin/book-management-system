@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "setup": "npm install && cd webapp && npm install",
     "start": "node ./bin/www",
     "dev": "nodemon set DEBUG=book-management:* & npm start"
   },
