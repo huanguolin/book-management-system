@@ -1,5 +1,5 @@
 # book-management
-Write an simple book management system to learn MEAN(mysql + express + angularjs + node).
+Write an simple book management system to learn `mysql + express + react + node`.
 
 # Build Setup
 
