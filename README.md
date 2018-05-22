@@ -7,6 +7,9 @@ Write an simple book management system to learn MEAN(mysql + express + angularjs
 # install dependencies
 ./install.sh
 
-# serve with hot reload at localhost:3000
+# run as development mode at localhost:3000
+./dev.sh
+
+# run as production mode localhost:3000
 ./start.sh
 ```
