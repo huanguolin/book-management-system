@@ -7,6 +7,9 @@ Write an simple book management system to learn `mysql + express + react + node`
 # install dependencies
 ./install.sh
 
-# serve with hot reload at localhost:3000
+# run as development mode, and service at localhost:8080,front-end at localhost:3000
+./dev.sh
+
+# run as production mode at localhost:8080
 ./start.sh
 ```
