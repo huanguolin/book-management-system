@@ -1,21 +1,71 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { 
+    Route,
+    Link,
+    Switch,
+} from 'react-router-dom';
+
+// global style
+import 'bootstrap-css-only/css/bootstrap.min.css';
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+// components
+import BookList from './components/BookList';
+import AddEditBook from './components/AddEditBook';
+
+export default class App extends Component {
+
+    constructor () {
+        super();
+        this.state = {
+            page: {
+                current: 1,
+                total: 1,
+            }
+        };
+    }
+    
+    render () {
+        const page = this.state.page;
+
+        const header = (
+            <header className="header">
+                <div className="content">
+                    <Link to="/">Books</Link>
+                    <Link to="/addbook">
+                        <span className="glyphicon glyphicon-plus"></span>
+                    </Link>
+                </div>
+            </header>
+        );
+        const footer = (
+            <footer className="footer">
+                <ul className="my-pager">
+                    <li className={page.current === 1 ? 'disabled' : ''} >
+                        previous
+                    </li>
+                    <li>{ page.total === -1 ? '...' : (page.current + '/' + page.total) }</li>
+                    <li className={page.current === page.total ? 'disabled' : ''} >
+                        next
+                    </li>
+                </ul>
+            </footer>
+        );
+
+        return (
+            <div className="wrapper">
+                {header}
+
+                <main className="main">
+                    <Switch>
+                        <Route path="/" component={BookList}/>
+                        <Route path="/addbook" component={AddEditBook}/>
+                    </Switch>
+                </main>
+
+                {footer}
+            </div>
+        );
+    }
 }
 
-export default App;
