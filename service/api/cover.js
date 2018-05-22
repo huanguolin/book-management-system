@@ -21,8 +21,8 @@ module.exports = [
                 }
 
                 const newName = uuid.v4() + '.' + file.name.split('.').pop();
-                const newPath = 'img/cover/' + newName; // this path for front-end to display
-                file.mv(path.resolve('webapp/app/', newPath), function (err) {
+                const newPath = 'cover/' + newName; // this path for front-end to display
+                file.mv(path.resolve('upload', newPath), function (err) {
                     if (err) {
                         res.status(500).json({ message: err });
                         return;

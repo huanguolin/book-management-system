@@ -185,7 +185,7 @@ angular.module('booksApp', [
         var h = time.getHours();
         var min = time.getMinutes();
         var s = time.getSeconds();
-        console.log(y);
+        
         return [y, m, d].join('/') + ' ' + [h, min, s].join(':');
     };
 });
