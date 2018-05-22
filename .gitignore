@@ -1,6 +1,6 @@
 # ignore use upload book cover images
-webapp/app/img/cover/*
-!webapp/app/img/cover/.gitkeep
+service/upload/cover/*
+!service/upload/cover/.gitkeep
 
 # Logs
 logs

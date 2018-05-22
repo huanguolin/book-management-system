@@ -18,6 +18,7 @@ app.use(fileUpload({
 
 // basic configure
 app.use(express.static(path.resolve('../webapp/app')));
+app.use(express.static(path.resolve('upload')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(logger('dev'));
