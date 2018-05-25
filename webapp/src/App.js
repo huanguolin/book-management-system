@@ -12,7 +12,7 @@ import 'bootstrap-css-only/css/bootstrap.min.css';
 import './App.css';
 
 // components
-import Pagination from './components/Pagination'
+import Pagination from './components/Pagination';
 import BookList from './components/BookList';
 import BookDetail from './components/BookDetail';
 import AddEditBook from './components/AddEditBook';
@@ -74,14 +74,14 @@ class App extends Component {
     prePageClick () {
         this.setState({ 
             pageIndex: this.state.pageIndex - 1,
-         });
+        });
         setTimeout(() => this.refreshBooks(), 0);
     } 
 
     nextPageClick () {
         this.setState({ 
             pageIndex: this.state.pageIndex + 1,
-         });
+        });
         setTimeout(() => this.refreshBooks(), 0);
     } 
 
@@ -143,15 +143,15 @@ class App extends Component {
                 
                 {
                     this.props.location.pathname.match(/(add|edit)$/) ? 
-                    ''
-                    :  
-                    <footer className="footer">
-                        <Pagination 
-                            current={pageIndex}
-                            total={pageTotal}
-                            preClick={() => this.prePageClick()}
-                            nextClick={() => this.nextPageClick()}/>
-                    </footer>
+                        ''
+                        :  
+                        <footer className="footer">
+                            <Pagination 
+                                current={pageIndex}
+                                total={pageTotal}
+                                preClick={() => this.prePageClick()}
+                                nextClick={() => this.nextPageClick()}/>
+                        </footer>
                 }
             </div>
         );

@@ -33,4 +33,4 @@ export default {
         const res = await ajax.post('/api/cover/upload', formData);
         return res.data;
     },
-}
+};

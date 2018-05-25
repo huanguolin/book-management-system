@@ -16,7 +16,7 @@ class AddEditBook extends Component {
                 name: '',
                 author: '',
                 description: '',
-            }
+            },
         };
         const book = props.book;
         if (book) {
@@ -27,6 +27,7 @@ class AddEditBook extends Component {
         this.state = state;
     }
 
+    // eslint-disable-next-line
     async uploadCover (e) {
         const file = e.target.files[0];
         const res = await api.uploadCover(file);
@@ -70,7 +71,7 @@ class AddEditBook extends Component {
         }
     }
 
-    render() {
+    render () {
         const { action, cover, book } = this.state;
 
         return (
@@ -151,7 +152,7 @@ class AddEditBook extends Component {
             </div>
         );
     }
-};
+}
 
 
 export default withRouter(AddEditBook);

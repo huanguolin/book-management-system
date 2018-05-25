@@ -39,9 +39,9 @@ export default function (props) {
                         <p>{book.description}</p>
                         {
                             book.version > 0 ?   
-                            <div className="meta">Last update: {ts2time(book.updatedAt)}</div>
-                            : 
-                            ''
+                                <div className="meta">Last update: {ts2time(book.updatedAt)}</div>
+                                : 
+                                ''
                         }
                         <div className="meta">
                             Create at: {ts2time(book.createdAt)}
@@ -51,4 +51,4 @@ export default function (props) {
             </div>
         </div>
     );
-};
+}

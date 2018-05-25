@@ -1,0 +1,25 @@
+{
+    "extends": [
+        "eslint:recommended",
+        "react-app"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "globals": {
+        "document": false
+    },
+    "rules": {
+        "semi": [2, "always"],
+        "indent": [2, 4],
+        "func-call-spacing": [2, "never"],
+        "space-before-function-paren": [2, "always"],
+        "comma-dangle": ["error", "always-multiline"],
+
+        "no-mixed-operators": 0
+    }
+  }
