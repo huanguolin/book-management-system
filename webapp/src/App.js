@@ -33,7 +33,7 @@ class App extends Component {
             bookTotal: 0,
             enterDetail: false,
         };
-    }
+    } 
 
     async componentDidMount () {
         await this.refreshBooks();

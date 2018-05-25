@@ -27,7 +27,6 @@ class AddEditBook extends Component {
         this.state = state;
     }
 
-    // eslint-disable-next-line
     async uploadCover (e) {
         const file = e.target.files[0];
         const res = await api.uploadCover(file);
