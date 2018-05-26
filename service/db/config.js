@@ -1,6 +1,6 @@
 'use strict';
 
-const useMysql = true;
+const useMysql = false;
 
 const config = {
     dialect: useMysql ? 'mysql' : 'postgres',
