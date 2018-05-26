@@ -1,0 +1,89 @@
+.book-detail {
+    /* get space */
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+
+    /* layout */
+    display: flex;    
+    flex-flow: column nowrap;
+}
+
+/* detail part */
+.detail {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.detail .container {
+    width: 700px;
+    padding: 1em;
+    margin: auto;
+}
+
+.detail .action {
+    display: flex;
+    flex-flow: row-reverse nowrap;
+    padding: 0 3em;
+    font-size: 1.2em;
+}
+
+.detail .container:hover .action {
+    visibility: visible;
+}
+
+@media (min-width: 768px) {
+    .detail .action { visibility: hidden; }
+}
+
+.detail .action .glyphicon {
+    padding: .5em;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.detail .action .glyphicon:hover {
+    color: #666;
+}
+
+.detail .cover > img {
+    display: block;
+    max-height: 350px;
+    width: auto;
+    margin: 0 auto;
+}
+
+.detail .info .author {
+    color: gray;
+}
+
+.detail .meta {
+    margin: .3em 0;
+    font-size: .9em;
+    color: #aaa;
+}
+
+@media (max-width: 767px) {
+    .detail .cover > img {
+        max-width: calc(100vw - 30px); 
+        height: auto;
+        margin: 0 auto;
+    }
+    .detail .info { padding:  0 3em; }
+}
+
+/* detail-page part */
+.detail-page {
+    flex: 0 0 auto;
+    position: relative;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 5em;
+    box-shadow: 0 -1px 3px rgba(26,26,26,.1);
+}

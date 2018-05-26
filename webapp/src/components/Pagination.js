@@ -1,4 +1,5 @@
 import React from 'react';
+import './Pagination.css';
 
 export default function (props) {
     const disabledPreBtn = props.current === 1;

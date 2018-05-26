@@ -1,14 +1,17 @@
 import ajax from 'axios';
 
 export default {
-    async getBooks (query) {
-        const PAGE = 1;
-        const PAGE_SIZE = 10;        
+    async getBooks ({pageIndex = 1, pageSize = 5}) {      
         const params = {
-            page: query && query.page || PAGE, 
-            page_size: query && query.pageSize || PAGE_SIZE,
+            page: pageIndex, 
+            page_size: pageSize,
         };
         const res = await ajax.get('/api/books', { params });
+        return res.data;
+    }, 
+    
+    async getBook (id) {  
+        const res = await ajax.get('/api/book/' + id);
         return res.data;
     },
 

@@ -2,29 +2,24 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import DEFAULT_COVER from '../assets/default_book_cover.jpg';
-import './AddEditBook.css';
-import api from '../api';
-import { capitalize } from '../util';
+import './BookAddEdit.css';
+import api from '../common/api';
+import { capitalize } from '../common/util';
 
 class AddEditBook extends Component {
     constructor (props) {
         super(props);
-        const state = {
-            action: 'add',
-            cover: DEFAULT_COVER,
-            book: {
-                name: '',
-                author: '',
-                description: '',
-            },
+        this.state = {
+            fetchBook: this.fetchBook.bind(this),
         };
-        const book = props.book;
-        if (book) {
-            state.action = 'edit';
-            state.cover = book.cover || DEFAULT_COVER;
-            state.book = Object.assign({}, book);
-        }
-        this.state = state;
+    }
+
+    async fetchBook (id) {
+        const book = await api.getBook(id);
+        this.setState({
+            cover: book.cover || DEFAULT_COVER,
+            book,
+        });
     }
 
     async uploadCover (e) {
@@ -70,6 +65,13 @@ class AddEditBook extends Component {
         }
     }
 
+    updateInputValue (event, field) {
+        const { book } = this.state;
+        const newBook = {};
+        newBook[field] = event.target.value;
+        this.setState({ book: Object.assign(book, newBook) });
+    }
+
     render () {
         const { action, cover, book } = this.state;
 
@@ -105,7 +107,7 @@ class AddEditBook extends Component {
                                     placeholder="Name"
                                     maxLength="128"
                                     value={book.name}
-                                    onChange={e => this.setState({book: Object.assign(book, {name: e.target.value})})}/>
+                                    onChange={e => this.updateInputValue(e,  'name')}/>
                             </div>
                         </div>
                 
@@ -118,7 +120,7 @@ class AddEditBook extends Component {
                                     placeholder="Author"
                                     maxLength="128"
                                     value={book.author}
-                                    onChange={e => this.setState({book: Object.assign(book, {author: e.target.value})})}/>
+                                    onChange={e => this.updateInputValue(e,  'author')}/>
                             </div>
                         </div>
                 
@@ -131,7 +133,7 @@ class AddEditBook extends Component {
                                     placeholder="Description"
                                     maxLength="1024"
                                     value={book.description}
-                                    onChange={e => this.setState({book: Object.assign(book, {description: e.target.value})})}>
+                                    onChange={e => this.updateInputValue(e,  'description')}>
                                 </textarea>
                             </div>
                         </div>
@@ -150,6 +152,23 @@ class AddEditBook extends Component {
                 </div>
             </div>
         );
+    }
+
+    static getDerivedStateFromProps (props, state) { 
+        const id = props.match.params.id;       
+        const isEdit = !!id;
+        if (isEdit) {
+            state.fetchBook(id);
+        }
+        return {
+            action: isEdit ? 'edit' : 'add',
+            cover: DEFAULT_COVER,
+            book: {
+                name: '',
+                author: '',
+                description: '',
+            },
+        };
     }
 }
 
