@@ -12,4 +12,7 @@ Write an simple book management system to learn `mysql + express + react + node`
 
 # run as production mode at localhost:8080
 ./start.sh
+
+# build webapp
+./build.sh
 ```
