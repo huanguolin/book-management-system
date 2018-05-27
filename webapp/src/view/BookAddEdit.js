@@ -22,18 +22,18 @@ class AddEditBook extends Component {
         });
     }
 
-    async uploadCover (e) {
+    async updateCover (e) {
         const file = e.target.files[0];
-        const res = await api.uploadCover(file);
         this.setState({
-            cover: res.coverPath,
+            cover: window.URL.createObjectURL(file),
+            coverFile: file,
         });
     }
 
     async submit (e) {
         e.preventDefault();
 
-        const { action, cover, book } = this.state;
+        const { action, coverFile, book } = this.state;
 
         // validate params
         if (!book.name || !book.author) {
@@ -44,10 +44,9 @@ class AddEditBook extends Component {
 
         // adjust cover value
         const useBook = book;
-        if (cover === 'img/default_book_cover.jpg') {
-            useBook.cover = '';
-        } else {
-            useBook.cover = cover ;
+        if (coverFile) {            
+            const res = await api.uploadCover(coverFile);
+            useBook.cover = res.coverPath;
         }
 
         // do real thing 
@@ -87,12 +86,12 @@ class AddEditBook extends Component {
                             <input type="file" 
                                 id="coverUpload"
                                 accept="image/jpg, image/jpeg, image/png"
-                                onChange={(e) => this.uploadCover(e)}
+                                onChange={(e) => this.updateCover(e)}
                                 ref={e => this.inputElement = e}/>
                         </div>
                         <button className="btn btn-default" 
                             onClick={() => this.inputElement.click()}>
-                            Upload Book Cover
+                            Update Book Cover
                         </button>
                     </div>
                     
@@ -163,6 +162,7 @@ class AddEditBook extends Component {
         return {
             action: isEdit ? 'edit' : 'add',
             cover: DEFAULT_COVER,
+            coverFile: null,
             book: {
                 name: '',
                 author: '',

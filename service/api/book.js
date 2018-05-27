@@ -99,7 +99,7 @@ module.exports = [
 
                     // remove cover
                     if (cover) {
-                        const coverPath = path.resolve('webapp/app', cover);
+                        const coverPath = path.resolve('upload', cover);
                         if (fs.existsSync(coverPath)) {
                             fs.unlinkSync(coverPath);
                         }
