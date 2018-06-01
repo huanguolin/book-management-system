@@ -31,7 +31,7 @@ class BookDetail extends Component {
         };
     }
 
-    async fetchBook () {
+    async _fetchBook () {
         const params = {
             pageIndex: this.state.pageIndex,
             pageSize: PAGE_SIZE,
@@ -43,21 +43,21 @@ class BookDetail extends Component {
         });
     }
 
-    prePageClick () {
+    _prePageClick () {
         this.setState({
             pageIndex: this.state.pageIndex - 1,
         });
-        setTimeout(() => this.fetchBook(), 0);
+        setTimeout(() => this._fetchBook(), 0);
     }
 
-    nextPageClick () {
+    _nextPageClick () {
         this.setState({
             pageIndex: this.state.pageIndex + 1,
         });
-        setTimeout(() => this.fetchBook(), 0);
+        setTimeout(() => this._fetchBook(), 0);
     }
 
-    async removeBook () {
+    async _removeBook () {
         const msg = 'Are you sure to remove this book infomation?';  
         if (!window.confirm(msg)) {
             return;
@@ -71,7 +71,7 @@ class BookDetail extends Component {
             this.setState({
                 pageTotal: pageTotal - 1,
             });  
-            setTimeout(() => this.fetchBook(), 0);    
+            setTimeout(() => this._fetchBook(), 0);    
         } else {      
             this.props.history.push('/books');
         } 
@@ -90,7 +90,7 @@ class BookDetail extends Component {
                                     <span className="glyphicon glyphicon-pencil"></span>
                                 </Link>
                                 <span className="glyphicon glyphicon-remove" 
-                                    onClick={() => this.removeBook()}>
+                                    onClick={() => this._removeBook()}>
                                 </span>
                             </div>
                     
@@ -120,15 +120,15 @@ class BookDetail extends Component {
                     <Pagination 
                         current={pageIndex}
                         total={pageTotal}
-                        preClick={() => this.prePageClick()}
-                        nextClick={() => this.nextPageClick()}/>
+                        preClick={() => this._prePageClick()}
+                        nextClick={() => this._nextPageClick()}/>
                 </section>
             </div>
         );
     }
 
     componentDidMount () {
-        this.fetchBook();
+        this._fetchBook();
     }
 }
 

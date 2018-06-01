@@ -10,11 +10,11 @@ class AddEditBook extends Component {
     constructor (props) {
         super(props);
         this.state = {
-            fetchBook: this.fetchBook.bind(this),
+            fetchBook: this._fetchBook.bind(this),
         };
     }
 
-    async fetchBook (id) {
+    async _fetchBook (id) {
         const book = await api.getBook(id);
         this.setState({
             cover: book.cover || DEFAULT_COVER,
@@ -22,7 +22,7 @@ class AddEditBook extends Component {
         });
     }
 
-    async updateCover (e) {
+    async _updateCover (e) {
         const file = e.target.files[0];
         this.setState({
             cover: window.URL.createObjectURL(file),
@@ -30,7 +30,7 @@ class AddEditBook extends Component {
         });
     }
 
-    async submit (e) {
+    async _submit (e) {
         e.preventDefault();
 
         const { action, coverFile, book } = this.state;
@@ -64,7 +64,7 @@ class AddEditBook extends Component {
         }
     }
 
-    updateInputValue (event, field) {
+    _updateInputValue (event, field) {
         const { book } = this.state;
         const newBook = {};
         newBook[field] = event.target.value;
@@ -86,7 +86,7 @@ class AddEditBook extends Component {
                             <input type="file" 
                                 id="coverUpload"
                                 accept="image/jpg, image/jpeg, image/png"
-                                onChange={(e) => this.updateCover(e)}
+                                onChange={(e) => this._updateCover(e)}
                                 ref={e => this.inputElement = e}/>
                         </div>
                         <button className="btn btn-default" 
@@ -106,7 +106,7 @@ class AddEditBook extends Component {
                                     placeholder="Name"
                                     maxLength="128"
                                     value={book.name}
-                                    onChange={e => this.updateInputValue(e,  'name')}/>
+                                    onChange={e => this._updateInputValue(e,  'name')}/>
                             </div>
                         </div>
                 
@@ -119,7 +119,7 @@ class AddEditBook extends Component {
                                     placeholder="Author"
                                     maxLength="128"
                                     value={book.author}
-                                    onChange={e => this.updateInputValue(e,  'author')}/>
+                                    onChange={e => this._updateInputValue(e,  'author')}/>
                             </div>
                         </div>
                 
@@ -132,7 +132,7 @@ class AddEditBook extends Component {
                                     placeholder="Description"
                                     maxLength="1024"
                                     value={book.description}
-                                    onChange={e => this.updateInputValue(e,  'description')}>
+                                    onChange={e => this._updateInputValue(e,  'description')}>
                                 </textarea>
                             </div>
                         </div>
@@ -141,7 +141,7 @@ class AddEditBook extends Component {
                             <div className="col-sm-offset-3 col-sm-2">
                                 <button type="submit" 
                                     className="btn btn-primary" 
-                                    onClick={e => this.submit(e)}>
+                                    onClick={e => this._submit(e)}>
                                     submit
                                 </button>
                             </div>

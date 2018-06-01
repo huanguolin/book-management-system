@@ -19,7 +19,7 @@ export default class BookList extends Component {
         };
     }
 
-    async fetchBooks () {
+    async _fetchBooks () {
         const params = {
             pageIndex: this.state.pageIndex,
             pageSize: PAGE_SIZE,
@@ -31,18 +31,18 @@ export default class BookList extends Component {
         });
     }
 
-    prePageClick () {
+    _prePageClick () {
         this.setState({
             pageIndex: this.state.pageIndex - 1,
         });
-        setTimeout(() => this.fetchBooks(), 0);
+        setTimeout(() => this._fetchBooks(), 0);
     }
 
-    nextPageClick () {
+    _nextPageClick () {
         this.setState({
             pageIndex: this.state.pageIndex + 1,
         });
-        setTimeout(() => this.fetchBooks(), 0);
+        setTimeout(() => this._fetchBooks(), 0);
     }
 
     render () {
@@ -73,15 +73,15 @@ export default class BookList extends Component {
                     <Pagination 
                         current={pageIndex}
                         total={pageTotal}
-                        preClick={() => this.prePageClick()}
-                        nextClick={() => this.nextPageClick()}/>
+                        preClick={() => this._prePageClick()}
+                        nextClick={() => this._nextPageClick()}/>
                 </section>
             </div>
         ); 
     }
 
     componentDidMount () {
-        this.fetchBooks();
+        this._fetchBooks();
     }
 }
 
