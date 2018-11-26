@@ -1,3 +1,5 @@
+dist/
+
 # ignore use upload book cover images
 service/upload/cover/*
 !service/upload/cover/.gitkeep

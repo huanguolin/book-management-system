@@ -1,4 +1,7 @@
-'use strict';
+import 'bootstrap/dist/css/bootstrap.css';
+
+import angular from 'angular';
+
 
 // Declare app level module which depends on views, and components
 angular.module('booksApp', [
