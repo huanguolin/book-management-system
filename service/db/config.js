@@ -5,7 +5,7 @@ const useMysql = true;
 const config = {
     dialect: useMysql ? 'mysql' : 'postgres',
     database: 'books_info',
-    username: 'alvin',
+    username: 'root',
     password: 'alvin',
     host    : 'localhost',
     port: useMysql ? 3306 : 5432,
